@@ -58,14 +58,20 @@
       "type": "quantitative",
       "title": "Gross Domestic Product",
       "axis": {"tickCount": 7},
-      "scale": {"type": "sqrt", "domain": [0, 1000]}
+      "scale": {
+        "type": "sqrt", 
+        "domain": [0, 1000]
+      }
     },
     "y": {
       "field": "Total",
       "type": "quantitative",
       "title": "Total CO2 Emissions",
       "axis": {"tickCount": 7},
-      "scale": {"type": "sqrt", "domain": [0, 12000]}
+      "scale": {
+        "type": "sqrt", 
+        "domain": [0, 12000]
+      }
     }
   },
   "layer": [
@@ -108,12 +114,7 @@
         "tooltip": [
           {"field": "Country", "type": "nominal"},
           {"field": "Population", "type": "quantitative", "format": ","},
-          {
-            "field": "Total",
-            "type": "quantitative",
-            "format": ",",
-            "title": "Total CO2 Emissions"
-          },
+          {"field": "Total", "type": "quantitative", "format": ",", "title": "Total CO2 Emissions"},
           {"field": "Per Capita", "type": "quantitative", "format": ","}
         ]
       }
@@ -140,12 +141,7 @@
         "tooltip": [
           {"field": "Country", "type": "nominal"},
           {"field": "Population", "type": "quantitative", "format": ","},
-          {
-            "field": "Total",
-            "type": "quantitative",
-            "format": ",",
-            "title": "Total CO2 Emissions"
-          },
+          {"field": "Total", "type": "quantitative", "format": ",", "title": "Total CO2 Emissions"},
           {"field": "Per Capita", "type": "quantitative", "format": ","}
         ]
       }
