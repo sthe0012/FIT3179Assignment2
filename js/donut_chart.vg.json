@@ -25,8 +25,7 @@
     },
     "color": {
       "field": "Emission Type", 
-      "type": "nominal",
-      "title": "CO2 Emissions by Type:"},
+      "type": "nominal"},
     "tooltip": [
         {"field": "Total", "type": "quantitative"},
         {"field": "Emission Type", "type": "nominal"},
