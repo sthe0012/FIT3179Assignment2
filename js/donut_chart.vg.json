@@ -16,7 +16,7 @@
     "calculate": "datum.Total/datum.TotalTotal",
     "as": "PercentOfTotal"
   }],
-  "mark": {"type": "arc", "innerRadius": 50, "tooltip": true, "stroke": "grey"},
+  "mark": {"type": "arc", "innerRadius": 50, "tooltip": true, "stroke": "white"},
   "encoding": {
     "theta": {
       "field": "Total",
