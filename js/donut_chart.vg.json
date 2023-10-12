@@ -1,6 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "CO2 Emissions By Fuel Type",
+  "width": "container",
+  "height": 250,
   "data": {
     "url": "https://raw.githubusercontent.com/sthe0012/FIT3179Assignment2/main/data/CO2FuelType.csv"
   },
@@ -25,7 +27,8 @@
     },
     "color": {
       "field": "Emission Type", 
-      "type": "nominal"},
+      "type": "nominal",
+      "title": "CO2 Emissions by Type:"},
     "tooltip": [
         {"field": "Total", "type": "quantitative"},
         {"field": "Emission Type", "type": "nominal"},
