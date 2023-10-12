@@ -1,0 +1,100 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url":
+      "https://raw.githubusercontent.com/sthe0012/FIT3179Assignment2/main/data/2022v1_MtCO2_flat.csv"
+    },
+    "transform": [
+      {"filter": "datum.Country === 'Global'"}
+    ],
+    "hconcat":[
+        {
+            "vconcat": [
+            {
+                "width": 600,
+                "height": 240,
+                "mark": {"type": "area"},
+                "title": "Total CO2 Emissions Over Time",
+                "encoding": {
+                "x": {
+                    "field": "Year", 
+                    "type": "temporal", 
+                    "scale": {"domain": {"param": "brush"}},
+                    "axis": {"grid": false}},
+                "y": {"field": "Total", "type": "quantitative"}
+                }
+            },
+            {
+                "width": 600,
+                "height": 60,
+                "mark": "line",
+                "title": "Use this line to filter the data based on the year.",
+                "params": [
+                {"name": "brush", "select": {"type": "interval", "encodings": ["x"]}}
+                ],
+                "encoding": {
+                "x": {"field": "Year", "type": "temporal"},
+                "y": {
+                    "field": "Total",
+                    "type": "quantitative",
+                    "axis": {"tickCount": 3, "grid": false}
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "width": 300,
+            "height": 300,
+            "title": "Top 3 Countries with the Highest Total CO2 Emissions",
+            "data": {"url": "https://raw.githubusercontent.com/sthe0012/FIT3179Assignment2/main/data/2021_PerCapitaCO2_flat.csv"},
+            "params": [
+                {
+                "name": "highlight",
+                "select": {"type": "point", "on": "pointerover"}
+                },
+                {"name": "select", "select": "point"}
+            ],
+            "transform": [
+                {"filter": "datum.Country === 'United States of America' || datum.Country === 'China' || datum.Country === 'India'"}
+            ],
+            "mark": {
+                "type": "bar",
+                "fill": "#4C78A8",
+                "stroke": "black",
+                "cursor": "pointer",
+                "tooltip": true
+            },
+            "encoding": {
+                "x": {"field": "Country", "sort": "-y"},
+                "y": {"field": "Total", "aggregate": "max", "title": "Total CO2 Emissions"},
+                "fill": {
+                "field": "Country",
+                "scale": {
+                  "domain": ["United States of America", "China", "India"],
+                  "range": ["#4C78A8", "#E45756", "#138808"]
+                }
+              },
+                "fillOpacity": {
+                "condition": {"param": "select", "value": 1},
+                "value": 0.3
+              },
+              "strokeWidth": {
+                "condition": [
+                  {
+                    "param": "select",
+                    "empty": false,
+                    "value": 2
+                  },
+                  {
+                    "param": "highlight",
+                    "empty": false,
+                    "value": 1
+                  }
+                ],
+                "value": 0
+              }
+            }
+        }
+    ]
+}
