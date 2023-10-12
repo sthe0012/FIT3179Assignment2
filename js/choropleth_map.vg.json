@@ -1,14 +1,20 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Global CO2 Emissions (2021)",
-  "width": 800,
+  "width": "container",
   "height": 400,
   "projection": {"type": "equalEarth"},
-  "data": {
-    "url": "https://raw.githubusercontent.com/sthe0012/FIT3179Assignment2/main/js/ne_110m_admin_0_countries.topojson",
-    "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
-  },
-  "transform": [
+  "layer": 
+    [
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
+          "format": {
+            "type": "topojson",
+            "feature": "ne_110m_admin_0_countries"
+          }
+        },
+        "transform": [
     {
       "lookup": "properties.NAME",
       "from": {
@@ -34,4 +40,75 @@
       {"field": "Total CO2 Emissions Per Capita", "type": "quantitative"}
     ]
   }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/7_others/oceans.topojson",
+        "format": {"type": "topojson", "feature": "oceans"}
+      },
+      "mark": {"type": "geoshape", "fill": "skyblue"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/WorldMapWithGraticules.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_110m_graticules_30"
+        }
+      },
+      "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+    },
+    {
+      "mark": {
+        "type": "point",
+        "size": 200,
+        "shape": "diamond",
+        "color": "#040404"
+      }
+    },
+    {
+      "transform": [
+        {
+          "window": [{"op": "rank", "as": "ranking"}],
+          "sort": [{"field": "Total", "order": "descending"}]
+        },
+        {"filter": "datum.ranking == 1"},
+        {
+          "calculate": " datum.Country + ' has the highest Happiness Score: ' + datum.Total",
+          "as": "text_annotation_raw"
+        },  
+        {
+          "calculate": "split(datum.text_annotation_raw, ';')",
+          "as": "text_annotation"
+        }
+      ],
+      "encoding": {
+        "longitude": {"field": "Longitude", "type": "quantitative"},
+        "latitude": {"field": "Latitude", "type": "quantitative"}
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "point",
+            "size": 200,
+            "shape": "diamond",
+            "color": "#040404"
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": -8,
+            "dy": -12,
+            "fontStyle": "italic",
+            "fontWeight": "bold",
+            "fontSize": 10.5,
+            "color": "#000000"
+          },
+          "encoding": {"text": {"field": "text_annotation"}}
+        }
+      ]
+    }
+  ]
 }
