@@ -6,6 +6,13 @@
   "data": {
     "url": "https://raw.githubusercontent.com/sthe0012/FIT3179Assignment2/main/data/CO2FuelType.csv"
   },
+  "params": [
+    {
+      "name": "highlight",
+      "select": {"type": "point", "on": "pointerover"}
+    },
+    {"name": "select", "select": "point"}
+  ],
   "transform": [{
     "window": [{
         "op": "sum",
@@ -18,7 +25,13 @@
     "calculate": "datum.Total/datum.TotalTotal",
     "as": "PercentOfTotal"
   }],
-  "mark": {"type": "arc", "innerRadius": 50, "tooltip": true, "stroke": "white"},
+  "mark": {
+    "type": "arc",
+    "innerRadius": 50,
+    "stroke": "white",
+    "cursor": "pointer",
+    "tooltip": true
+  },
   "encoding": {
     "theta": {
       "field": "Total",
@@ -38,6 +51,30 @@
           "title": "Percentage",
           "format": ".1%"
         }
-      ]
+      ],
+    "fillOpacity": {
+      "condition": {"param": "select", "value": 1},
+      "value": 0.3
+    },
+    "strokeWidth": {
+      "condition": [
+        {
+          "param": "select",
+          "empty": false,
+          "value": 2
+        },
+        {
+          "param": "highlight",
+          "empty": true,
+          "value": 1
+        }
+      ],
+      "value": 0
+    }
+  },
+  "config": {
+    "scale": {
+      "bandPaddingInner": 0.2
+    }
   }
 }
