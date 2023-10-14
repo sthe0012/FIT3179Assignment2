@@ -3,6 +3,7 @@
   "width": 800,
   "height": 600,
   "title": "Global CO2 Contribution in 2021",
+  "background": "floralwhite",
   "data": {
     "url": "https://raw.githubusercontent.com/sthe0012/FIT3179Assignment2/main/data/2021_PerCapitaCO2_flat.csv"
   },
@@ -58,20 +59,14 @@
       "type": "quantitative",
       "title": "Gross Domestic Product",
       "axis": {"tickCount": 7},
-      "scale": {
-        "type": "sqrt", 
-        "domain": [0, 1000]
-      }
+      "scale": {"type": "sqrt", "domain": [0, 1000]}
     },
     "y": {
       "field": "Total",
       "type": "quantitative",
       "title": "Total CO2 Emissions",
       "axis": {"tickCount": 7},
-      "scale": {
-        "type": "sqrt", 
-        "domain": [0, 12000]
-      }
+      "scale": {"type": "sqrt", "domain": [0, 12000]}
     }
   },
   "layer": [
@@ -84,7 +79,7 @@
           "scale": {
             "type": "threshold",
             "domain": [1000000, 10000000, 50000000, 100000000, 500000000],
-            "range": [10, 50, 150, 200, 300, 400]
+            "range": [50, 100, 150, 300, 450, 600]
           },
           "legend": {"format": ".1s"}
         },
@@ -114,7 +109,12 @@
         "tooltip": [
           {"field": "Country", "type": "nominal"},
           {"field": "Population", "type": "quantitative", "format": ","},
-          {"field": "Total", "type": "quantitative", "format": ",", "title": "Total CO2 Emissions"},
+          {
+            "field": "Total",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Total CO2 Emissions"
+          },
           {"field": "Per Capita", "type": "quantitative", "format": ","}
         ]
       }
@@ -141,7 +141,12 @@
         "tooltip": [
           {"field": "Country", "type": "nominal"},
           {"field": "Population", "type": "quantitative", "format": ","},
-          {"field": "Total", "type": "quantitative", "format": ",", "title": "Total CO2 Emissions"},
+          {
+            "field": "Total",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Total CO2 Emissions"
+          },
           {"field": "Per Capita", "type": "quantitative", "format": ","}
         ]
       }
