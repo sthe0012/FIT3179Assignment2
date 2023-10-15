@@ -3,7 +3,7 @@
   "title": "Global CO2 Emissions (2021)",
   "width": "container",
   "background": "floralwhite",
-  "height": 400,
+  "height": 500,
   "data": {
     "url": "https://raw.githubusercontent.com/sthe0012/FIT3179Assignment2/main/data/20152021_PerCapitaCO2_flat.csv"  
   },
