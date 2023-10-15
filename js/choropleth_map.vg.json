@@ -10,7 +10,7 @@
   "projection": {"type": "equalEarth"},
   "params": [
       {
-        "name": "Year_selection",
+        "name": "Year_select",
         "value": 2015,
         "bind": {
           "input": "select",
@@ -32,7 +32,7 @@
             "2020",
             "2021"
           ],
-        "name": "Year Selection: "
+        "name": "Change the Year: "
         }
       }
     ],
@@ -86,7 +86,7 @@
             }
           },
           {
-            "filter": "datum.Year == Year_selection"
+            "filter": "datum.Year == Year_select"
           }
         ],
         "mark": "geoshape",
